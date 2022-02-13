@@ -1,0 +1,30 @@
+py manage.py makemigrations --dry-run --verbosity 3
+py manage.py runserver
+py manage.py createsuperuser 
+pip install coverage
+coverage run --omit='*/venv/*' manage.py test
+coverage html
+pip install djangorestframework
+
+Permission to setting.py:
+AllowAny
+IsAuthenticatedOrReadOnly
+
+---------------
+API schema
+pip install PyYAML
+pip install uritemplate
+from rest_framework.schemas import get_schema_view
+create path : path('openapi', get_schema_view(
+        title = "Your Project",
+        description ="API for all thing ...",
+        version= "1.0.0",
+    ),name = 'openapi-schema'),
+
+
+pip install coreapi
+
+in setting add  : 'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapi.AutoSchema'
+in url new path :
+from rest_framework.documentation import include_docs_urls
+path('docs/',include_docs_urls(title ='BlogAPI')),
