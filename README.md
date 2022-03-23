@@ -1,2 +1,2 @@
-# 2handbookBackend
+# 2handbookBackend(Django)
 backend / django
